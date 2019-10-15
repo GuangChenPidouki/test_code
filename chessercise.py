@@ -1,4 +1,5 @@
 import sys
+import re
 
 def list_move(x, y, chess_type):
 	base_dir = [(1,0), (0,1), (-1,0), (0,-1)]
@@ -44,6 +45,9 @@ def to_chess(x, y):
 	return chr(ord('a')+x) + str(y+1)
 
 def from_chess(pos):
+	pattern = re.compile("^[a-z][0-9]$")
+	if(len(pos) != 2 or not pattern.match(pos)):
+		return (-1, -1)
 	return (ord(pos[0])-ord('a'), int(pos[1])-1)
 
 def usage():
