@@ -18,23 +18,18 @@ def list_move(x, y, chess_type):
 	else:
 		print("No such chess type defined")
 
-def move(x, y, directions, step):
-	if(step == 1):
-		for dir_x, dir_y in directions:
-			if(isValid(x+dir_x, y+dir_y)):
-				yield to_chess(x+dir_x, y+dir_y)
-	else:
-		for dir_x, dir_y in directions:
-			yield from move_along(x, y, dir_x, dir_y)
-
-def move_along(x, y, dir_x, dir_y):
-	while(True):
-		x += dir_x
-		y += dir_y
-		if(isValid(x, y)):
-			yield to_chess(x, y)
-		else:
-			break
+def move(orig_x, orig_y, directions, max_step):
+	for dir_x, dir_y in directions:
+		x, y = orig_x, orig_y
+		step = max_step
+		while(step > 0):
+			x += dir_x
+			y += dir_y
+			if(isValid(x, y)):
+				yield to_chess(x, y)
+			else:
+				break
+			step -= 1
 
 def isValid(x, y):
 	if(x < 0 or x > 7 or y < 0 or y > 7):

@@ -36,14 +36,12 @@ class GuessNumber:
 					print("As guessed number already touch limit %d, you cannot go beyond" % n)
 				else:
 					break
+			self.guess_times += 1
 			if(decide == 'h'):
 				high = n - 1
-				self.guess_times += 1
 			elif(decide == 'l'):
 				low = n + 1
-				self.guess_times += 1
 			else:
-				self.guess_times += 1
 				self.guess_num = n
 				self.finish_print()
 				return
