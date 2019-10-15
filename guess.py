@@ -31,7 +31,7 @@ class GuessNumber:
 			while(True):
 				decide = input("%d ?" % n)
 				if(decide not in ['h', 'l', 'c']):
-					print("Please input 'l'--[low] or 'h'--[high] or 'c'--[equal]")
+					print("Please input 'l'--[low] or 'h'--[high] or 'c'--[correct]")
 				elif(((n == low) and (decide == 'h')) or ((n == high) and (decide == 'l'))):
 					print("As guessed number already touch limit %d, you cannot go beyond" % n)
 				else:
